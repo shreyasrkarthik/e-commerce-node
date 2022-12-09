@@ -9,13 +9,13 @@ import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 
-const PORT = 8000;
+const PORT = 4000;
 const app = express();
 
 dotenv.config();
 
 mongoose.connect(process.env.DB_URI, { useNewUrlParser: true }).then(() => {
-    console.log("Connected to DB");
+    console.log("Connected to DB", process.env.DB_URI);
 });
 
 app.use(cors());
