@@ -9,7 +9,7 @@ import productRoutes from "./routes/productRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import orderRoutes from "./routes/orderRoutes.js";
 
-const PORT = 4000;
+const PORT = process.env.PORT || 4000;
 const app = express();
 
 dotenv.config();
