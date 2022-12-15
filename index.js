@@ -18,7 +18,12 @@ mongoose.connect(process.env.DB_URI, { useNewUrlParser: true }).then(() => {
     console.log("Connected to DB", process.env.DB_URI);
 });
 
-app.use(cors());
+const corsOptions = {
+    origin:'*',
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200,
+}
+app.use(cors(corsOptions));
 app.options("*", cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
