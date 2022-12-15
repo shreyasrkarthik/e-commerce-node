@@ -49,6 +49,17 @@ const findUser = async (req, res, _next) => {
     }
 };
 
+const findUserByEmailId = async (req, res, _next) => {
+    const emailId = req.params;
+    console.log("emailID", emailId)
+    const user = await userModel.findByEmail(emailId);
+    if (user) {
+        res.status(200).json({ user });
+    } else {
+        res.json({ success: false, error: "User not found" });
+    }
+};
+
 const updateUser = async (req, res, _next) => {
     const { id } = req.params;
     const user = await userModel.findById(id);
@@ -114,6 +125,7 @@ export default {
     createUser,
     findAllUsers,
     findUser,
+    findUserByEmailId,
     updateUser,
     deleteUser,
     findOrders,

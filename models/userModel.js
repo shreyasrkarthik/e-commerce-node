@@ -17,8 +17,8 @@ const findById = async (id) => {
 }
 
 const findByEmail = async (email) => {
-    const [user] = await User.find({ email });
-    return user;
+    console.log("Model email", email);
+    return User.findOne({email: email["id"]});
 }
 
 const update = async (id, updatedUser) => {
