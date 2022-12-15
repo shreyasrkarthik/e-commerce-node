@@ -27,7 +27,7 @@ const authenticate = async (req, res, _next) => {
 const createUser = async (req, res, _next) => {
     const user = req.body;
     const newUser = await userModel.create(user);
-    res.json({ newUser });
+    res.status(200).json({ newUser });
 };
 
 const findAllUsers = async (_req, res, _next) => {
