@@ -4,12 +4,13 @@ import userModel from "../models/userModel.js";
 
 
 const authenticate = async (req, res, _next) => {
+    console.log(req.body);
     const { email, password, userType } = req.body;
 
     const userTypes = {
         shopper: "SHOPPER",
         admin: "ADMIN",
-        staff: "STAFF",
+        seller: "SELLER"
     };
 
     const user = await userModel.findByEmail(email);

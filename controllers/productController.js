@@ -1,9 +1,10 @@
 import productModel from "../models/productModel.js";
 
 const createProduct = async (req, res, _next) => {
-    const { product } = req.body;
+    console.log("Product being created", req.body);
+    const product = req.body;
     const newProduct = await productModel.create(product);
-    res.json({ newProduct });
+    res.status(200).json({ newProduct });
 };
 
 const addReview = async (req, res, _next) => {
