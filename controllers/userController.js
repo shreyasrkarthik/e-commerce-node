@@ -14,6 +14,9 @@ const authenticate = async (req, res, _next) => {
 
     const user = await userModel.findByEmail(email);
     if (user) {
+        console.log(user);
+        console.log(password, user.password);
+        console.log(userTypes[userType], user.userType);
         if (password === user.password && userTypes[userType] === user.userType) {
             res.status(200).json({ success: true });
         } else {
@@ -52,7 +55,7 @@ const findUser = async (req, res, _next) => {
 const findUserByEmailId = async (req, res, _next) => {
     const emailId = req.params;
     console.log("emailID", emailId)
-    const user = await userModel.findByEmail(emailId);
+    const user = await userModel.findByEmail(emailId["id"]);
     if (user) {
         res.status(200).json({ user });
     } else {
