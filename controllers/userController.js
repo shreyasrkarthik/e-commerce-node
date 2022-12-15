@@ -61,12 +61,14 @@ const findUserByEmailId = async (req, res, _next) => {
 };
 
 const updateUser = async (req, res, _next) => {
+    console.log(req.body);
     const { id } = req.params;
     const user = await userModel.findById(id);
     if (user) {
-        const { user } = req.body;
+        const user = req.body;
         await userModel.update(id, user);
         const updatedUser = await userModel.findById(id);
+        console.log("Updated", updatedUser);
         res.json({ updatedUser });
     } else {
         res.json({ success: false, error: "User not found" });
